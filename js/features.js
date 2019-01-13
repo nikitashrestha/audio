@@ -12,12 +12,40 @@ var audioContext;
 var recordButton = document.getElementById("recordButton");
 var stopButton = document.getElementById("stopButton");
 var pauseButton = document.getElementById("pauseButton"); 
+var showtext = document.getElementById("text");
+var container = document.getElementById("cont");
+var show = document.getElementById("showtext-btn");
+var username=document.getElementById("username");
+var container1 = document.getElementById("container");
+var control = document.getElementById("controls");
+var i=0; 
+var text= document.getElementById("nepalitext");
 
- 
 //add events to those 3 buttons
+showtext.addEventListener("click",ShowText);
 recordButton.addEventListener("click", startRecording);
 stopButton.addEventListener("click", stopRecording);
 pauseButton.addEventListener("click", pauseRecording);
+
+
+var usertext=new Array("नमस्कार "," तर्फ़ बाट यहाँलाई न्यानो अभिवादन", "आफु र आफ्नो परिवार पालना हरेक व्यक्तिले इमान्दारीका साथ् आ-आफ्नो दक्ष अनुसार पेसा वत काम गर्नु पर्छ ", " तर कुनै मान्छेले पनि मेसिनझैं  काम  गर्न  सक्दैन "," सबैलाई काम बाहेक पारिवारिक समयको खाँचो  पर्दछ "," पारिवारिक मात्र नभई दिमाग लाई आराम दिन का निम्ति सेल्फ-तिमे पनि हुन सक्छ "," यस संगै हाम्रा चाड पर्व पनि हामीलाई मनाउन उत्तिकै जरुरि हुन्छ", "सरकारले हालै ल्याएको सार्वजनिक बिदा न्यूनीकरण प्रणाली ल्याएको छ "," यसले अफिस कार्य छिटै नै सम्पन्न हुने आश्वाशन दिलाउन्छ"," किनकि यसले जन शक्ति उपयोग बढी हुने तथ्याँख देखाउन्छ"," तर निजि भविष्यमा सरकारले यस प्रणाली विरुद्ध आलोचना झेल्नु पर्ने पनि हुन सक्छ");
+      
+function ShowText(){
+    alert('help');
+    container.style.visibility="hidden";
+    show.style.visibility="hidden";
+    var name = username.value;
+    container1.style.height="35%";
+            /*document.getElementById("container").style.width="50%";*/
+    control.style.visibility="visible";
+    
+   
+          
+  
+    text.innerHTML=usertext[i];
+      
+
+}
 
 function startRecording() {
     audioContext = new AudioContext(); //new audio context to help us record
@@ -90,7 +118,9 @@ function pauseRecording(){
 
 function stopRecording() {
     console.log("stopButton clicked");
- 
+    i++;
+
+    text.innerHTML=usertext[i];
     //disable the stop button, enable the record too allow for new recordings
     stopButton.disabled = true;
     recordButton.disabled = false;
