@@ -1,0 +1,86 @@
+<html>
+<head>
+  <title>Data Collection</title>
+  <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+    <script src="js/jquery.min.js"></script>
+   
+</head>
+<body>
+
+  <!-- audio recording -->
+  
+  <ol id="recordingsList"></ol>
+
+
+  <div class="container" id="container" style="width: 30%;  margin-top:10%; " >
+    
+    <div id="controls" id="controls" style=" padding:2%;">
+         <button id="recordButton" class="btn btn-success">Record</button>
+         <button id="pauseButton" class="btn btn-info" >Pause</button>
+         <button id="stopButton" class="btn btn-warning" >Stop</button>
+    </div>
+
+    <h5 id="nepalitext" style=" margin:10%;" ></h5>
+    
+    <form class="form-inline" method="process.php" action="POST" id="form">
+        <div class="container" style="padding: 17%; margin:2%;">
+        <div class="form-group mb-3">
+          <h6>Your Name:</h6><hr>
+          <input type="text" class="form-control" id="username" oninput="ShowBtn();" required>
+          <div class="container" id="showtext-btn">
+            <hr>
+            <button type="button" class="btn btn-outline-info" id="text" onclick="ShowText();">Text please !</button>
+            <hr>
+          </div>
+            
+          <button type="submit" class="btn btn-info" id="submit-btn" style="margin:2px;"  >Submit</button>
+        </div>
+      </div>
+    </form>
+
+  </div>
+  
+
+    <script src="js/bootstrap.min.js"></script> <!-- keep this file here or js won't work -->
+     
+    <script>
+      document.getElementById("controls").style.visibility="hidden";
+      document.getElementById("submit-btn").style.visibility="hidden";
+      document.getElementById("showtext-btn").style.visibility="hidden";
+      function ShowBtn(){
+        document.getElementById("showtext-btn").style.visibility="visible";
+      }
+
+      var usertext=new Array("नमस्कार "," तर्फ़ बाट यहाँलाई न्यानो अभिवादन", "आफु र आफ्नो परिवार पालना हरेक व्यक्तिले इमान्दारीका साथ् आ-आफ्नो दक्ष अनुसार पेसा वत काम गर्नु पर्छ ", " तर कुनै मान्छेले पनि मेसिनझैं  काम  गर्न  सक्दैन "," सबैलाई काम बाहेक पारिवारिक समयको खाँचो  पर्दछ "," पारिवारिक मात्र नभई दिमाग लाई आराम दिन का निम्ति सेल्फ-तिमे पनि हुन सक्छ "," यस संगै हाम्रा चाड पर्व पनि हामीलाई मनाउन उत्तिकै जरुरि हुन्छ", "सरकारले हालै ल्याएको सार्वजनिक बिदा न्यूनीकरण प्रणाली ल्याएको छ "," यसले अफिस कार्य छिटै नै सम्पन्न हुने आश्वाशन दिलाउन्छ"," किनकि यसले जन शक्ति उपयोग बढी हुने तथ्याँख देखाउन्छ"," तर निजि भविष्यमा सरकारले यस प्रणाली विरुद्ध आलोचना झेल्नु पर्ने पनि हुन सक्छ");
+      
+      function ShowText(){
+        document.getElementById("form").style.visibility="hidden";
+        document.getElementById("showtext-btn").style.visibility="hidden";
+        var username=document.getElementById("username").value;
+        document.getElementById("container").style.height="35%";
+        /*document.getElementById("container").style.width="50%";*/
+        document.getElementById("controls").style.visibility="visible";
+        exports(username);
+        var text= document.getElementById("nepalitext");
+        var i=0; 
+      
+        var x= setInterval(function(){
+          text.innerHTML=usertext[i];
+          i++;
+          if(i>=11){
+            clearInterval(x);
+          }
+
+        }, (i+1)*3000); 
+
+      }
+
+    
+  </script>
+  <script src="https://cdn.rawgit.com/mattdiamond/Recorderjs/08e7abd9/dist/recorder.js"></script>
+  <script src="js/features.js"></script>
+</body>
+
+</html>
