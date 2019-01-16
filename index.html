@@ -29,6 +29,8 @@
 
           <h6>Your Name:</h6><hr>
           <input type="text" class="form-control" id="username" oninput="ShowBtn();" required>
+          <input type="radio" name="radio" value="M" onclick="set_value(value)"> Male
+          <input type="radio" name="radio" value="F" onclick="set_value(value)"> Female 
           <div class="container" id="showtext-btn">
             <hr>
             <button id="text" type="button" class="btn btn-outline-info" >Text please !</button>
@@ -42,11 +44,23 @@
     <script src="js/bootstrap.min.js"></script> <!-- keep this file here or js won't work -->
    
     <script>
+      var gender;
       document.getElementById("controls").style.visibility="hidden";
-      document.getElementById("submit-btn").style.visibility="hidden";
+      
       document.getElementById("showtext-btn").style.visibility="hidden";
       function ShowBtn(){
         document.getElementById("showtext-btn").style.visibility="visible";
+        
+      }
+
+      function set_value(value){
+        if(value == "M"){
+          gender = "Male";
+        }
+        else{
+          gender = "Female";
+        }
+        exports(document.getElementById('username').value,gender);
       }
   </script>
   <script src="https://cdn.rawgit.com/mattdiamond/Recorderjs/08e7abd9/dist/recorder.js"></script>
